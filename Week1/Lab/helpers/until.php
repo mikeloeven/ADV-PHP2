@@ -9,13 +9,16 @@ function isPostRequest() {
     return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
 }
 
-function addPhone($phone, $phoneType ) {
+function addAddress($addr1, $addr2, $city, $state, $zip ) {
     
     $db = dbconnect();
-    $stmt = $db->prepare("INSERT INTO phone SET phone = :phone, phonetype = :phonetype, logged = now(), lastupdated = now()");
+    $stmt = $db->prepare("INSERT INTO phone SET addr1 = :addr1, addr2 = :addr2, city = :city, state = :state, zip = :zip");
     $binds = array(
-        ":phone" => $phone,
-        ":phonetype" => $phoneType,
+        ":addr1" => $addr1,
+        ":addr2" => $addr2,
+        ":city" => $city,
+        ":state" => $state,
+        ":zip" => $zip,
     );
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         return true;
@@ -24,10 +27,10 @@ function addPhone($phone, $phoneType ) {
     return false;
 }
 
-function getAllPhone() {
+function getAllAddress() {
     
     $db = dbconnect();
-    $stmt = $db->prepare("SELECT * FROM phone");
+    $stmt = $db->prepare("SELECT * FROM address");
     
     $results = array();
     if ($stmt->execute() && $stmt->rowCount() > 0) {
