@@ -9,6 +9,7 @@
         <H1>Add Address</h1>
         <br />
         
+        
         <?php
         /*
          * Includes
@@ -19,7 +20,7 @@
         $validate = new validate();
         
         /*
-         * Persistance vars
+         * Persistance vars Populate from Form
          */
         $addr1= filter_input(INPUT_POST, 'addr1');
         $addr2= filter_input(INPUT_POST, 'addr2');
@@ -47,7 +48,9 @@
         </div>
         
         <?php
-        
+        /*
+         * Validation
+         */
         if (isPostRequest())
         {
             $valid = 1;
@@ -56,7 +59,9 @@
             if (!$validate->validateString($city)) {echo " <br /> City Invalid<br />"; $valid = 0;}
             if (!$validate->validateState($state)) {echo "<br />State Invalid <br />"; $valid=0;}
             if (!$validate->validateZip($zip)) {echo "<br />Zip Invalid <br />"; $valid = 0;}
-            
+            /*
+             * Insert Call if Valid
+             */
             if ($valid == 1)
             {
                 if(addAddress($addr1, $addr2, $city, $state, $zip))

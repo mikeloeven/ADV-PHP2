@@ -11,11 +11,19 @@
 
         <div class="container">
         <?php
+        
+        /* 
+         * requirements
+         */
         require_once './helpers/dbconnect.php';
         require_once './helpers/until.php';
+        
         $db = dbconnect();
         $addrL = getAllAddress();
 
+        /*
+         * Generate Table Of Results
+         */
         if (count($addrL) > 0) {
             echo "<table border=\"1\"><tr><th>ID</th><th>Address</th><th>city</th><th>state</th><th>zip</th></tr>";
             foreach ($addrL as $row) {
@@ -28,6 +36,8 @@
         }
         ?>
         </div>
+        
+        <!-- Navigate to Add Page -->
     <form action="./add.php">
     <input type="submit" value="Add Address">
     </form>
