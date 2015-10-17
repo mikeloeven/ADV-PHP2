@@ -1,8 +1,14 @@
 <html>
     <head>
-        
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        
+        
+        
+        <H1>Add Address</h1>
+        <br />
+        
         <?php
         /*
          * Includes
@@ -23,10 +29,7 @@
         
         
         ?>
-        
-        
-        <H1>Add Address</h1>
-        
+        <div class="container">
         <form action="#" method="POST">
             
             <label>Address1:</label><input type="text" name="addr1" value="<?php echo $addr1; ?>"><br/>
@@ -34,12 +37,14 @@
             <label>City:</label><input type="text" name="city" value="<?php echo $city; ?>"><br/>
             <label>State:</label><input type="text" name="state" maxlength="2" value="<?php echo $state; ?>"><br/>
             <label>Zip:</label><input type="text" name="zip" maxlength="5" value="<?php echo $zip; ?>"><br/>
-        
+            <br />
+            <br />
             <input type="submit" value="Add" >
         </form>
         <form action ="index.php">
             <input type="submit" value="Back">
         </form>
+        </div>
         
         <?php
         
