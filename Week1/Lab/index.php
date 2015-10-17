@@ -10,6 +10,7 @@
         <H1>Address List</H1>
 
         <div class="container">
+        <table border=\"1\"><tr><th>ID</th><th>Address</th><th>city</th><th>state</th><th>zip</th></tr>
         <?php
         
         /* 
@@ -24,17 +25,33 @@
         /*
          * Generate Table Of Results
          */
-        if (count($addrL) > 0) {
-            echo "<table border=\"1\"><tr><th>ID</th><th>Address</th><th>city</th><th>state</th><th>zip</th></tr>";
-            foreach ($addrL as $row) {
-                echo "<tr><td>" . $row['addressID'] . "</td><td>" . $row['addr1'] . "<br/>" . $row['addr2'] . "</td><td>" . $row['city'] . "</td><td>" . $row['state'] . "</td><td>" . $row['zip'] . "</td></tr>";
-            }
-
-            echo "</table>";
-        } else {
-            echo "<h1>No Data</h1>";
-        }
         ?>
+        
+        <?php if (count($addrL) > 0) :?>
+            
+            <?php foreach ($addrL as $row) : ?>
+            <tr><td>                    
+            <?php echo $row['addressID']; ?>                
+            </td><td>                
+            <?php echo $row['addr1'];?>            
+            <br/>            
+            <?php echo $row['addr2'];?>            
+            </td><td>            
+            <?php echo $row['city'];?>            
+            </td><td>                
+            <?php echo $row['state'];?>            
+            </td><td>                
+            <?php echo $row['zip'];?>            
+            </td></tr>            
+            <?php endforeach; ?>
+            </table>
+            
+        <?php  else : ?>
+        
+            <h1>No Data</h1>
+        
+        <?php endif; ?>
+        
         </div>
         
         <!-- Navigate to Add Page -->

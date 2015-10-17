@@ -47,36 +47,36 @@
         </form>
         </div>
         
-        <?php
+       
+        
+        <?php 
         /*
          * Validation
          */
-        if (isPostRequest())
-        {
-            $valid = 1;
-            if (!$validate->validateString($addr1)) {echo " <br /> Addr1 Invalid<br />"; $valid = 0;}
-            if (!$validate->validateString($addr2)) {echo " <br /> Addr2 Invalid<br />"; $valid = 0;}
-            if (!$validate->validateString($city)) {echo " <br /> City Invalid<br />"; $valid = 0;}
-            if (!$validate->validateState($state)) {echo "<br />State Invalid <br />"; $valid=0;}
-            if (!$validate->validateZip($zip)) {echo "<br />Zip Invalid <br />"; $valid = 0;}
+        if (isPostRequest()) : ?>
+            <?php $valid = 1; ?>
+            <?php if (!$validate->validateString($addr1)) : ?> <br /> Addr1 Invalid<br /> <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateString($addr2)) : ?> <br /> Addr2 Invalid<br /> <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateString($city))  : ?> <br /> City Invalid<br />  <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateState($state))  : ?> <br />State Invalid <br /> <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateZip($zip))      : ?> <br />Zip Invalid <br />   <?php $valid = 0; endif; ?>
+            
+            <?php
             /*
              * Insert Call if Valid
              */
-            if ($valid == 1)
-            {
-                if(addAddress($addr1, $addr2, $city, $state, $zip))
-                {
-                    echo "<br/>Address Added<br />";
-                }                    
-               
+             
+            if ($valid == 1) :?>
             
-            }
-            else echo "<br /> Address Not Added <br />";
+                <?php if(addAddress($addr1, $addr2, $city, $state, $zip)): ?> <br/>Address Added<br /> <?php endif; ?>                      
+                   
             
-        }   
+            <?php else : ?> <br /> Address Not Added <br /> <?php endif;?>
+            
+        <?php endif; ?>  
         
         
         
-        ?>
+        
     </body>
 </html>
