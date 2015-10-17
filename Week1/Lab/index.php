@@ -9,6 +9,7 @@
         
         <H1>Address List</H1>
 
+        <div class="container">
         <?php
         require_once './helpers/dbconnect.php';
         require_once './helpers/until.php';
@@ -26,7 +27,7 @@
             echo "<h1>No Data</h1>";
         }
         ?>
-        
+        </div>
     <form action="./add.php">
     <input type="submit" value="Add Address">
     </form>
