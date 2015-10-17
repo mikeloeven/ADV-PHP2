@@ -42,6 +42,8 @@
             <br />
             <input type="submit" value="Add" >
         </form>
+        
+        <!-- Nav Button -->
         <form action ="index.php">
             <input type="submit" value="Back">
         </form>
