@@ -49,17 +49,17 @@
         
        
         
-        <?php 
-        /*
-         * Validation
-         */
-        if (isPostRequest()) : ?>
-            <?php $valid = 1; ?>
-            <?php if (!$validate->validateString($addr1)) : ?> <br /> Addr1 Invalid<br /> <?php $valid = 0; endif; ?>
-            <?php if (!$validate->validateString($addr2)) : ?> <br /> Addr2 Invalid<br /> <?php $valid = 0; endif; ?>
-            <?php if (!$validate->validateString($city))  : ?> <br /> City Invalid<br />  <?php $valid = 0; endif; ?>
-            <?php if (!$validate->validateState($state))  : ?> <br />State Invalid <br /> <?php $valid = 0; endif; ?>
-            <?php if (!$validate->validateZip($zip))      : ?> <br />Zip Invalid <br />   <?php $valid = 0; endif; ?>
+        <?php if (isPostRequest()) :
+            
+            /*
+             * Validation
+             */
+            $valid = 1; ?>
+            <?php if (!$validate->validateString($addr1)) : ?> <br /> Addr1 Invalid <br /> <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateString($addr2)) : ?> <br /> Addr2 Invalid <br /> <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateString($city))  : ?> <br /> City Invalid <br />  <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateState($state))  : ?> <br /> State Invalid <br /> <?php $valid = 0; endif; ?>
+            <?php if (!$validate->validateZip($zip))      : ?> <br /> Zip Invalid <br />   <?php $valid = 0; endif; ?>
             
             <?php
             /*
