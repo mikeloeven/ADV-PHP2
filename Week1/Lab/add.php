@@ -3,7 +3,18 @@
         
     </head>
     <body>
-        <?php 
+        <?php
+        /*
+         * Includes
+         */
+        require_once './helpers/dbconnect.php';
+        require_once './helpers/until.php';
+        require_once './helpers/validate.php';
+        $validate = new validate();
+        
+        /*
+         * Persistance vars
+         */
         $addr1= filter_input(INPUT_POST, 'addr1');
         $addr2= filter_input(INPUT_POST, 'addr2');
         $city= filter_input(INPUT_POST, 'city');
@@ -12,6 +23,8 @@
         
         
         ?>
+        
+        
         <H1>Add Address</h1>
         
         <form action="#" method="POST">
@@ -24,12 +37,31 @@
         
             <input type="submit" value="Add" >
         </form>
+        <form action ="index.php">
+            <input type="submit" value="Back">
+        </form>
         
         <?php
-        require_once './functions/dbconnect.php';
-        require_once './functions/until.php';
+        
         if (isPostRequest())
         {
+            $valid = 1;
+            if (!$validate->validateString($addr1)) {echo " <br /> Addr1 Invalid<br />"; $valid = 0;}
+            if (!$validate->validateString($addr2)) {echo " <br /> Addr2 Invalid<br />"; $valid = 0;}
+            if (!$validate->validateString($city)) {echo " <br /> City Invalid<br />"; $valid = 0;}
+            if (!$validate->validateState($state)) {echo "<br />State Invalid <br />"; $valid=0;}
+            if (!$validate->validateZip($zip)) {echo "<br />Zip Invalid <br />"; $valid = 0;}
+            
+            if ($valid == 1)
+            {
+                if(addAddress($addr1, $addr2, $city, $state, $zip))
+                {
+                    echo "<br/>Address Added<br />";
+                }                    
+               
+            
+            }
+            else echo "<br /> Address Not Added <br />";
             
         }   
         

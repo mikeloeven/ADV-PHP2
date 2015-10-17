@@ -10,9 +10,8 @@ function isPostRequest() {
 }
 
 function addAddress($addr1, $addr2, $city, $state, $zip ) {
-    
     $db = dbconnect();
-    $stmt = $db->prepare("INSERT INTO phone SET addr1 = :addr1, addr2 = :addr2, city = :city, state = :state, zip = :zip");
+    $stmt = $db->prepare("INSERT INTO address SET addr1 = :addr1, addr2 = :addr2, city = :city, state = :state, zip = :zip");
     $binds = array(
         ":addr1" => $addr1,
         ":addr2" => $addr2,
