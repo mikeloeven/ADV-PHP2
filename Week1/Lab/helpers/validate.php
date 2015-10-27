@@ -22,6 +22,8 @@ class validate {
 
     }
     
+   
+    
     public function validateState($string)
     {
         $regex = '/[a-zA-Z]{2}/';

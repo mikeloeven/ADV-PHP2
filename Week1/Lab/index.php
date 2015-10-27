@@ -1,16 +1,17 @@
 <html>
     <head>
         <meta charset="UTF-8">
-       <link rel="stylesheet" href="style.css">
+       <link rel="stylesheet" href="./CSS/bootstrap.css">
+       <link rel="stylesheet" href="./CSS/bootstrap.min.css">
         <title></title>
     </head>
     <body>
 
         
-        <H1>Address List</H1>
+        <H1 style="padding-left: 40%">Address List</H1>
 
         <div class="container">
-            <table border=\"1\"><tr><th>ID</th><th>Name</th><th>Email</th><th>Address</th><th>city</th><th>state</th><th>zip</th><th>Birthday</th></tr>
+            <table class="table" border="1"><tr><th>ID</th><th>Name</th><th>Email</th><th>Address</th><th>city</th><th>state</th><th>zip</th><th>Birthday</th></tr>
             <?php
         
             /* 
@@ -60,7 +61,7 @@
         
         <!-- Navigate to Add Page -->
         <form action="./add.php">
-        <input type="submit" value="Add Address">
+        <input class="btn btn-default" style="margin-left: 45%" type="submit" value="Add Address">
         </form>
     </body>
 </html>

@@ -1,12 +1,13 @@
 <html>
     <head>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="./CSS/bootstrap.css">
+       <link rel="stylesheet" href="./CSS/bootstrap.min.css">
     </head>
     <body>
         
         
         
-        <H1>Add Address</h1>
+        <H1 style="padding-left: 11%">Add Address</h1>
         <br />
         
         
@@ -33,23 +34,25 @@
         
         ?>
         <div class="container">
-        <form action="#" method="POST">
+        <form style="width: 50%; margin-left: -15%; " class="form-horizontal" action="#" method="POST" >
             
-            <label>Full Name:</label><input type="text" name="fullName" value="<?php echo $fullName; ?>"><br/>
-            <label>Email:</label><input type="text" name="email" value="<?php echo $email; ?>"><br/>
-            <label>Address:</label><input type="text" name="address" value="<?php echo $address; ?>"><br/>
-            <label>City:</label><input type="text" name="city" value="<?php echo $city; ?>"><br/>
-            <label>State:</label><input type="text" name="state" maxlength="2" value="<?php echo $state; ?>"><br/>
-            <label>Zip:</label><input type="text" name="zip" maxlength="5" value="<?php echo $zip; ?>"><br/>
-            <label>Birthday:</label><input type="text" name="birthday" value="<?php echo $birthday; ?>"><br/>
+            
+            <br />
+            <label class="col-lg-2 control-label">Full_Name:</label><input class="form-control" type="text" name="fullName" value="<?php echo $fullName; ?>"><br/>
+            <label class="col-lg-2 control-label">Email:</label><input class="form-control" type="text" name="email" value="<?php echo $email; ?>"><br/>
+            <label class="col-lg-2 control-label">Address:</label><input class="form-control" type="text" name="address" value="<?php echo $address; ?>"><br/>
+            <label class="col-lg-2 control-label">City:</label><input class="form-control" type="text" name="city" value="<?php echo $city; ?>"><br/>
+            <label class="col-lg-2 control-label">State:</label><input class="form-control" type="text" name="state" maxlength="2" value="<?php echo $state; ?>"><br/>
+            <label class="col-lg-2 control-label">Zip:</label><input class="form-control" type="text" name="zip" maxlength="5" value="<?php echo $zip; ?>"><br/>
+            <label class="col-lg-2 control-label">Birthday:</label><input class="form-control" type="date" name="birthday" value="<?php echo $birthday; ?>"><br/>
             <br />
             <br />
-            <input type="submit" value="Add" >
+            <input class="btn btn-default" style=" width: 30%; margin-left: 30%" type="submit" value="Add" >
         </form>
         
         <!-- Nav Button -->
-        <form action ="index.php">
-            <input type="submit" value="Back">
+        <form style="width: 50%; margin-left: -15%; " class="form-horizontal" action ="index.php">
+            <input class="btn btn-default" style="width: 30% ; margin-left: 30%" type="submit" value="Back">
         </form>
         </div>
         
