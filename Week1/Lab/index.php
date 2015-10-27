@@ -10,7 +10,7 @@
         <H1>Address List</H1>
 
         <div class="container">
-            <table border=\"1\"><tr><th>ID</th><th>Address</th><th>city</th><th>state</th><th>zip</th></tr>
+            <table border=\"1\"><tr><th>ID</th><th>Name</th><th>Email</th><th>Address</th><th>city</th><th>state</th><th>zip</th><th>Birthday</th></tr>
             <?php
         
             /* 
@@ -31,18 +31,22 @@
             
                 <?php foreach ($addrL as $row) : ?>
                     <tr><td>                    
-                    <?php echo $row['addressID']; ?>                
+                    <?php echo $row['address_id']; ?>                
                     </td><td>                
-                    <?php echo $row['addr1'];?>            
-                    <br/>            
-                    <?php echo $row['addr2'];?>            
-                    </td><td>            
+                    <?php echo $row['fullname'];?>            
+                    </td><td>          
+                    <?php echo $row['email'];?>            
+                    </td><td>
+                    <?php echo $row['addressline1'];?>            
+                    </td><td>  
                     <?php echo $row['city'];?>            
                     </td><td>                
                     <?php echo $row['state'];?>            
                     </td><td>                
                     <?php echo $row['zip'];?>            
-                    </td></tr>            
+                    </td><td>
+                    <?php echo date('m/d/Y', strtotime($row['birthday']));?>            
+                    </td></tr>  
                 <?php endforeach; ?>
             </table>
             

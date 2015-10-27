@@ -9,15 +9,17 @@ function isPostRequest() {
     return ( filter_input(INPUT_SERVER, 'REQUEST_METHOD') === 'POST' );
 }
 
-function addAddress($addr1, $addr2, $city, $state, $zip ) {
+function addAddress($fullName, $email, $address, $city, $state, $zip, $birthday ) {
     $db = dbconnect();
-    $stmt = $db->prepare("INSERT INTO address SET addr1 = :addr1, addr2 = :addr2, city = :city, state = :state, zip = :zip");
+    $stmt = $db->prepare("INSERT INTO address SET fullname = :fullname, email = :email, addressline1 = :address, city = :city, state = :state, zip = :zip, birthday = :birthday");
     $binds = array(
-        ":addr1" => $addr1,
-        ":addr2" => $addr2,
+        ":fullname" => $fullName,
+        ":email" => $email,
+        ":address" => $address,
         ":city" => $city,
         ":state" => $state,
         ":zip" => $zip,
+        ":birthday" => $birthday
     );
     if ($stmt->execute($binds) && $stmt->rowCount() > 0) {
         return true;
