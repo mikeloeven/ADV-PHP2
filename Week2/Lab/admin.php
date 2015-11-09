@@ -15,18 +15,34 @@ and open the template in the editor.
         
         <h1 class = "h1" style = "text-align: center"> Admin Page </h1><br />
         <?php
-        if(!isset($_SESSION['LoggedIn']))
-        {
-            ?><h3 class = "h3" style = "text-align: center"> You have been successfully authenticated </h3><br /><?php
+        include'./models/autoload.php';
+        $util=new util();
+        
+        if(isset($_SESSION['LoggedIn']))
+        {       
+                if ($util->isPostRequest())
+                {
+                    if(filter_input(INPUT_POST, 'action')=="Logout")
+                    {
+                        $auth=new authentication();
+                        $auth->logout();
+                    }
+                }
+            
+                ?> <p align="center" class="btn btn-success" style="margin-left: 0%; padding-right: 100%; padding-left: 43%; text-align: center"> You have been successfully authenticated </p> <?php        
+            
         }
+        
         else 
         {
-            ?><h1 class = "h1" style = "text-align: center"> Access Denied </h1><br />
-                <h3 class = "h3" style = "text-align: center"> You will be redirected in 5 seconds </h3><br />
-                    <?php
+            ?> <a href="index.php" align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 100%; padding-left: 43%; text-align: center"> Unauthorized Access <br /> You Will Be Redirected in 5 Seconds </a> <?php
             header("refresh:5;url=index.php");
             die("");
         }
         ?>
+
+            
+        <?php require_once './templates/admin.panel.html.php'; ?>    
+        
     </body>
 </html>

@@ -12,6 +12,68 @@ and open the template in the editor.
        <link rel="stylesheet" href="./CSS/bootstrap.min.css">
     </head>
     <body>
+        
+        <?php
+        include_once './models/autoload.php';
+        $util = new util();
+        $validate = new Validate();
+        $register = new registration();
+        $username = filter_input(INPUT_POST, 'username');
+        $email = filter_input(INPUT_POST, 'email');
+        
+        if ($util->isPostRequest())
+        {
+            if(filter_input(INPUT_POST, 'action')=="Register")
+            {
+                
+                if (!$validate->validateEmail(filter_input(INPUT_POST, 'email')))
+                {
+                    ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Invalid Email </p>  <?php
+                }
+                elseif (!$validate->validateString(filter_input(INPUT_POST, 'username')))
+                {
+                    ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Username Invalid </p>  <?php
+                }
+                elseif (!filter_input(INPUT_POST, 'password') == filter_input(INPUT_POST, 'password2'))
+                {
+                    ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Passwords Do Not Match </p>  <?php
+                }
+                else
+                {
+                    try
+                    {
+                        if ($register->register(filter_input(INPUT_POST, 'username'), filter_input(INPUT_POST, 'email'), filter_input(INPUT_POST, 'password')))
+                        {
+                            ?> <p align="center" class="btn btn-success" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Registration Successful </p>  <?php
+                        }
+                    } 
+                    catch (Exception $e) 
+                    {
+                        ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> <?php echo $e->getmessage(); ?> </p>  <?php
+                    }
+                }
+                
+            }
+                    
+            elseif(filter_input(INPUT_POST, 'action')=="Back")
+            {
+                
+                header('Location: index.php');
+                
+            }
+        }
+            
+        
+        ?>
+        
+        
         <h1 class = "h1" style = "padding-left: 40%"> Registration </h1><br />
+        <?php
+        
+            
+            require_once './templates/registeration.form.html.php';
+        
+        ?>
+        
     </body>
 </html>
