@@ -8,10 +8,14 @@
     
     <body>
         <?php 
+            //autoloader
             include_once './models/autoload.php';
             
+            //class init
             $util = new util();
             $login = new authentication();
+            
+            //
             if(filter_input(INPUT_GET, 'Logout')=="true")
             {
                 ?>

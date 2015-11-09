@@ -13,7 +13,7 @@
  */
 class Validate 
 {
-    
+    //checks if string is empty
     public function validateString($string)
     {       
             
@@ -28,6 +28,7 @@ class Validate
 
     }
     
+    //checks for valid email
     public function validateEmail($string)
     {
         if (filter_var($string, FILTER_VALIDATE_EMAIL))

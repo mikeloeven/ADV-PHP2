@@ -11,8 +11,11 @@
  *
  * @author Mikeloeven
  */
+
+//Handles All Authentication and Session Management
 class authentication {
     
+    //Default Constructor
     function __construct()
     {
         
@@ -27,14 +30,17 @@ class authentication {
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
         {   
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            //Checks to see if Password Matches
             if (password_verify($password, $results['password']))
             {
-                echo $password;
+              
+                //destroy existing session if exists
                 if (isset($_SESSION))
                 {
+                    //destory existing session if exists
                     session_destroy();
                 }
-                
+                //start session with ID and LoggedIn Flag
                 session_start();
                 $_SESSION['UID'] = $results['userid'];
                 $_SESSION['LoggedIn'] = true;
@@ -43,22 +49,25 @@ class authentication {
             }
             else 
             {
+                //Error Message If Passwords Do Not Match
                 throw new Exception('invalid username or password');   
             }
         }
         else 
         {
+            //Error if User Does Not Exist
             throw new Exception('invalid username or password');    
         }
     }
     
+    //destroy session and tell index page to display logout message
     function logout()
     {
        if (isset($_SESSION))
        {
            session_destroy();
        }
-       header("Location: index.php");
+       header("Location: index.php?Logout=true");
     }
     
     
