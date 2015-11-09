@@ -26,16 +26,17 @@ and open the template in the editor.
             if(filter_input(INPUT_POST, 'action')=="Register")
             {
                 
-                if (!$validate->validateEmail(filter_input(INPUT_POST, 'email')))
-                {
-                    ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Invalid Email </p>  <?php
-                }
-                elseif (!$validate->validateString(filter_input(INPUT_POST, 'username')))
+                if (!$validate->validateString(filter_input(INPUT_POST, 'username')))
                 {
                     ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Username Invalid </p>  <?php
                 }
-                elseif (!filter_input(INPUT_POST, 'password') == filter_input(INPUT_POST, 'password2'))
+                elseif (!$validate->validateEmail(filter_input(INPUT_POST, 'email')))
                 {
+                    ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Invalid Email </p>  <?php
+                }                
+                elseif (filter_input(INPUT_POST, 'password') != filter_input(INPUT_POST, 'password2'))
+                {
+                    echo "i'm Here";
                     ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Passwords Do Not Match </p>  <?php
                 }
                 else

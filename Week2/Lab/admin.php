@@ -17,26 +17,27 @@ and open the template in the editor.
         <?php
         include'./models/autoload.php';
         $util=new util();
-        
+        session_start();
         if(isset($_SESSION['LoggedIn']))
         {       
                 if ($util->isPostRequest())
                 {
+                    echo "Logging Out";
                     if(filter_input(INPUT_POST, 'action')=="Logout")
                     {
-                        $auth=new authentication();
-                        $auth->logout();
+                        authentication::logout();
                     }
                 }
-            
-                ?> <p align="center" class="btn btn-success" style="margin-left: 0%; padding-right: 100%; padding-left: 43%; text-align: center"> You have been successfully authenticated </p> <?php        
-            
+                else
+                {
+                    ?> <p align="center" class="btn btn-success" style="margin-left: 0%; padding-right: 100%; padding-left: 43%; text-align: center"> You have been successfully authenticated </p> <?php        
+                }
         }
         
         else 
         {
             ?> <a href="index.php" align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 100%; padding-left: 43%; text-align: center"> Unauthorized Access <br /> You Will Be Redirected in 5 Seconds </a> <?php
-            header("refresh:5;url=index.php");
+            header("refresh:5;url=./index.php");
             die("");
         }
         ?>

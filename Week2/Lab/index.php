@@ -12,14 +12,17 @@
             
             $util = new util();
             $login = new authentication();
-              if(filter_input(INPUT_GET, 'Logout')=="true")
-                    {
-                    ?>
-                        <p align="center" class="btn btn-primary" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> You Have Been Logged Out </p> 
-                    <?php   
-                    }
-               else
-               {}
+            if(filter_input(INPUT_GET, 'Logout')=="true")
+            {
+                ?>
+                    <p align="center" class="btn btn-primary" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> You Have Been Logged Out </p> 
+                <?php   
+            }
+            
+            else
+            {
+                  
+            }
                 
             if($util->isPostRequest()){
             
@@ -28,11 +31,13 @@
                 
                     
                     $error = null;
-                    try{
-               
+                    try
+                    {
+
                         if($login->login(filter_input(INPUT_POST, 'username'), filter_input(INPUT_POST, 'password')))
-                        {                    
-                            header("url=admin.php");
+                        {   
+                            header("location: ./admin.php");
+                            exit();
                         }
                         
                         else 
@@ -40,6 +45,7 @@
                             throw new Exception('Unknown Error Has Occured');
                         }
                     }
+                    
                     catch(exception $e)
                     {
                         

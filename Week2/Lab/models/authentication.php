@@ -22,13 +22,14 @@ class authentication {
     function login($username, $password)
     {
         $db = dbconnect::getdb();
-        $stmt = $db->prepare('SELECT userid, password FROM users WHERE userid = :username OR email = :username' );
-        $binds = array(":username"=>$username);
+        $stmt = $db->prepare('SELECT userid, password FROM users WHERE username = :username or email = :email');
+        $binds = array(':username'=>$username, ':email'=>$username);
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
         {   
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($password, $results['password']))
             {
+                echo $password;
                 if (isset($_SESSION))
                 {
                     session_destroy();
@@ -39,6 +40,10 @@ class authentication {
                 $_SESSION['LoggedIn'] = true;
                 
                 return true;
+            }
+            else 
+            {
+                throw new Exception('invalid username or password');   
             }
         }
         else 
