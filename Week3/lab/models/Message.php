@@ -9,7 +9,13 @@ namespace Week3Lab;
 class Message implements IMessage
 {
     
-    private $messages = [];
+    private $messages;
+    
+    public function __construct() 
+    {
+        $this->messages = [];
+    }
+    
     public function addMessage($key, $msg) 
     {
         $this->messages[$key] = $msg;
@@ -17,7 +23,7 @@ class Message implements IMessage
 
     public function getAllMessages() 
     {
-        return $this->$messages;
+        return $this->messages;
     }
 
     public function removeMessage($key)
