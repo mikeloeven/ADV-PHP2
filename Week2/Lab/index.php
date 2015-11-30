@@ -71,7 +71,7 @@
                 else
                 {
                     ?>
-                        <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Invalid Action </p> 
+                        <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Invalid Action WHAT HAVE YOU DONE YOU'VE DOOMED US ALL</p> 
                     <?php  
                 }
                     
