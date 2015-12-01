@@ -28,7 +28,7 @@ try {
     
     if ( 'address' === $resource ) {
         
-        $resourceData = new AddressResoruce();
+        $resourceData = new CorpsResource();
         
         if ( 'GET' === $verb ) {
             
@@ -48,10 +48,10 @@ try {
             
 
             if ($resourceData->post($serverData)) {
-                $restServer->setMessage('Address Added');
+                $restServer->setMessage('Corperation Added');
                 $restServer->setStatus(201);
             } else {
-                throw new Exception('Address could not be added');
+                throw new Exception('Corperation Not Added');
             }
         
         }
@@ -59,7 +59,7 @@ try {
         
         if ( 'PUT' === $verb ) {
             
-            if ( NULL === $id ) {
+            if ( NULL === $id   ) {
                 throw new InvalidArgumentException('Address ID ' . $id . ' was not found');
             }
             
