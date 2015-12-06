@@ -20,11 +20,11 @@ class registration {
     }
     
     //Register User
-    function register($username, $email, $password)
+    function register($email, $password)
     {
         $db = dbconnect::getdb();
-        $stmt = $db->prepare('SELECT userid FROM users WHERE username=:username OR email=:email');
-        $binds = array(":username"=>$username, ":email"=>$email);
+        $stmt = $db->prepare('SELECT userid FROM users WHERE email=:email');
+        $binds = array(":email"=>$email);
         //Check if User Exists
         if($stmt->execute($binds) && $stmt->rowCount()>0)
         {
@@ -35,8 +35,8 @@ class registration {
         {
             //hash password before storing
             $pHash = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $db->prepare('INSERT INTO users (username, email, password) VALUES (:username, :email, :pHash)');
-            $binds = array(":username"=>$username, "email"=>$email, ":pHash"=>$pHash);
+            $stmt = $db->prepare('INSERT INTO users (email, password) VALUES (:email, :pHash)');
+            $binds = array("email"=>$email, ":pHash"=>$pHash);
             if($stmt->execute($binds))
             {
                 //Successfull Registration

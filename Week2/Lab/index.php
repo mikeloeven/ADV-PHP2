@@ -38,7 +38,7 @@
                     try
                     {
 
-                        if($login->login(filter_input(INPUT_POST, 'username'), filter_input(INPUT_POST, 'password')))
+                        if($login->login(filter_input(INPUT_POST, 'email'), filter_input(INPUT_POST, 'password')))
                         {   
                             header("location: ./admin.php");
                             exit();

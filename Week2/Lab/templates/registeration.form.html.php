@@ -11,12 +11,6 @@ and open the template in the editor.
             <fieldset>
                 <legend>Register</legend>
                 <div class='form-group'>
-                    <label for='username' class='col-lg-2 control-label' style="width: 20%">username:</label>
-                    <div class="col-lg-10" style="width: 60%">
-                        <input type="text" class="form-control" name='username' placeholder='username' value="<?php echo $username; ?>">
-                    </div>
-                </div>
-                <div class='form-group'>
                     <label for='email' class='col-lg-2 control-label' style="width: 20%">email:</label>
                     <div class="col-lg-10" style="width: 60%">
                         <input type="text" class="form-control" name='email' placeholder='email' value="<?php echo $email; ?>">

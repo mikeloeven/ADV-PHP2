@@ -22,11 +22,11 @@ class authentication {
     }
    
     //Checks if Logged In User Exists
-    function login($username, $password)
+    function login($email, $password)
     {
         $db = dbconnect::getdb();
-        $stmt = $db->prepare('SELECT userid, password FROM users WHERE username = :username or email = :email');
-        $binds = array(':username'=>$username, ':email'=>$username);
+        $stmt = $db->prepare('SELECT userid, password FROM users WHERE email = :email');
+        $binds = array(':email'=>$email);
         if ($stmt->execute($binds) && $stmt->rowCount() > 0) 
         {   
             $results = $stmt->fetch(PDO::FETCH_ASSOC);

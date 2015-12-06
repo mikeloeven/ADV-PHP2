@@ -31,11 +31,7 @@ and open the template in the editor.
             if(filter_input(INPUT_POST, 'action')=="Register")
             {
                 //Validation Block
-                if (!$validate->validateString(filter_input(INPUT_POST, 'username')))
-                {
-                    ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Username Invalid </p>  <?php
-                }
-                elseif (!$validate->validateEmail(filter_input(INPUT_POST, 'email')))
+                if (!$validate->validateEmail(filter_input(INPUT_POST, 'email')))
                 {
                     ?> <p align="center" class="btn btn-danger" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Invalid Email </p>  <?php
                 }                
@@ -50,7 +46,7 @@ and open the template in the editor.
                     try
                     {
                         //Send Form Data To Registration Class
-                        if ($register->register(filter_input(INPUT_POST, 'username'), filter_input(INPUT_POST, 'email'), filter_input(INPUT_POST, 'password')))
+                        if ($register->register(filter_input(INPUT_POST, 'email'), filter_input(INPUT_POST, 'password')))
                         {
                             //Success Message
                             ?> <p align="center" class="btn btn-success" style="margin-left: 0%; padding-right: 48%; padding-left: 48%; text-align: center"> Registration Successful </p>  <?php

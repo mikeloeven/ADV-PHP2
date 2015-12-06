@@ -4,9 +4,9 @@
             <fieldset>
                 <legend>Sign In</legend>
                  <div class='form-group'>
-                    <label for='email' class='col-lg-2 control-label'>email or username:</label>
+                    <label for='email' class='col-lg-2 control-label'>email:</label>
                     <div class="col-lg-10">
-                        <input type="text" class="form-control" name='username' placeholder='username'>
+                        <input type="text" class="form-control" name='email' placeholder='email'>
                     </div>
                 </div>
                 <div class='form-group'>
