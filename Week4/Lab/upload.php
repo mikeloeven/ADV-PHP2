@@ -34,7 +34,7 @@ try {
     }
      
     // You should also check filesize here. 
-    if ($_FILES['upfile']['size'] > 1000000) {
+    if ($_FILES['upfile']['size'] > 20000000) {
         throw new RuntimeException('Exceeded filesize limit.');
     }
 
@@ -42,9 +42,16 @@ try {
     // Check MIME Type by yourself.
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $validExts = array(
+                    'txt' => 'text/plain',
+                    'html' => 'text/html',
+                    'pdf' => 'application/pdf',
+                    'doc' => 'application/msword',
+                    'docx' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                    'xls' => 'application/vnd.ms-excel',
+                    'xlsx' => 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
                     'jpg' => 'image/jpeg',
                     'png' => 'image/png',
-                    'gif' => 'image/gif',
+                    'gif' => 'image/gif'
                 );    
     $ext = array_search( $finfo->file($_FILES['upfile']['tmp_name']), $validExts, true );
     
