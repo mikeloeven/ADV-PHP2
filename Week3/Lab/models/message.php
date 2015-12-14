@@ -20,8 +20,7 @@ class Message implements IMessage
     public function __construct() 
     {
         $this->messages = [];
-    }
-    
+    }    
     public function addMessage($key, $msg) 
     {
         $this->messages[$key] = $msg;
@@ -33,8 +32,7 @@ class Message implements IMessage
     public function removeMessage($key)
     {
         unset($this->messages[$key]);
-    }
-    
+    }    
     public function clear()
     {
         $this->messages = array();
