@@ -2,13 +2,10 @@
 
 try {
     
-    // Undefined | Multiple Files | $_FILES Corruption Attack
-    // If this request falls under any of them, treat it invalid.
     if ( !isset($_FILES['upfile']['error']) || is_array($_FILES['upfile']['error']) ) {       
         throw new RuntimeException('Invalid parameters.');
     }
 
-    // Check $_FILES['upfile']['error'] value.
     switch ($_FILES['upfile']['error']) {
         case UPLOAD_ERR_OK:
             break;
@@ -21,13 +18,10 @@ try {
             throw new RuntimeException('Unknown errors.');
     }
      
-    // You should also check filesize here. 
     if ($_FILES['upfile']['size'] > 200000000) {
         throw new RuntimeException('Exceeded filesize limit.');
     }
 
-    // DO NOT TRUST $_FILES['upfile']['mime'] VALUE !!
-    // Check MIME Type by yourself.
     $finfo = new finfo(FILEINFO_MIME_TYPE);
     $validExts = array(
                     'txt' => 'text/plain',
@@ -47,10 +41,6 @@ try {
     if ( false === $ext ) {
         throw new RuntimeException('Invalid file format.');
     }
-
-    // You should name it uniquely.
-    // DO NOT USE $_FILES['upfile']['name'] WITHOUT ANY VALIDATION !!
-    // On this example, obtain safe unique name from its binary data.
     
     $fileName =  sha1_file($_FILES['upfile']['tmp_name']); 
     $location = sprintf('../uploads/%s.%s', $fileName, $ext); 
