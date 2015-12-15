@@ -1,5 +1,5 @@
 <?php namespace Lab4; include'./class/autoload.php' ;use finfo; use RuntimeException;
-
+session_start();
 try {
     
     if ( !isset($_FILES['upfile']['error']) || is_array($_FILES['upfile']['error']) ) {       
@@ -43,19 +43,19 @@ try {
     }
     
     $fileName =  sha1_file($_FILES['upfile']['tmp_name']); 
-    $location = sprintf('../uploads/%s.%s', $fileName, $ext); 
-    if(!is_dir('../uploads')){ mkdir ('../uploads');}
+    $location = sprintf('./uploads/%s.%s', $fileName, $ext); 
+    if(!is_dir('./uploads')){ mkdir ('./uploads');}
     if ( !move_uploaded_file( $_FILES['upfile']['tmp_name'], $location) ) {
         throw new RuntimeException('Failed to move uploaded file.');
     }
-
+ 
     $messages = new FlashMessage();
     $messages->removeAllMessages();
     $messages->addMessage('Success', 'File Uploaded Successfully');
     header('Location: ./upload-form.php');
 
 } catch (RuntimeException $e) {
-    session_start();
+
     $messages = new FlashMessage();
     $messages->removeAllMessages();
     $messages->addMessage('err', $e->getMessage());
