@@ -1,4 +1,4 @@
-<?php namespace Lab4; use finfo;
+<?php namespace Lab4; include'./class/autoload.php' ;use finfo; use RuntimeException;
 
 try {
     
@@ -49,12 +49,17 @@ try {
         throw new RuntimeException('Failed to move uploaded file.');
     }
 
-    echo 'File is uploaded successfully.';
+    $messages = new FlashMessage();
+    $messages->removeAllMessages();
+    $messages->addMessage('Success', 'File Uploaded Successfully');
+    header('Location: ./upload-form.php');
 
 } catch (RuntimeException $e) {
-
-    echo $e->getMessage();
-
+    session_start();
+    $messages = new FlashMessage();
+    $messages->removeAllMessages();
+    $messages->addMessage('err', $e->getMessage());
+    header('Location: ./upload-form.php');
 }
 ?>
   </body>
