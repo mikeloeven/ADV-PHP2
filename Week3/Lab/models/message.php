@@ -15,7 +15,7 @@ namespace Week3Lab;
 class Message implements IMessage
 {
     
-    private $messages;
+    protected $messages;
     
     public function __construct() 
     {
@@ -32,7 +32,11 @@ class Message implements IMessage
     public function removeMessage($key)
     {
         unset($this->messages[$key]);
-    }    
+    }
+    public function removeAllMessages()
+    {
+        $this->messages = [];
+    }
     public function clear()
     {
         $this->messages = array();

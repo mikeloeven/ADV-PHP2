@@ -2,7 +2,7 @@
 
 spl_autoload_register(function ($class)
 {
-    $prefix = 'Lab3\\';
+    $prefix = 'Week3Lab\\';
     $base_dir= './models/';
     $len = strlen($prefix);
     
