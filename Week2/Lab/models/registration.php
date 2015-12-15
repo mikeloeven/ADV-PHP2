@@ -35,7 +35,7 @@ class registration {
         {
             //hash password before storing
             $pHash = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $db->prepare('INSERT INTO users (email, password) VALUES (:email, :pHash)');
+            $stmt = $db->prepare('INSERT INTO users (email, password, created) VALUES (:email, :pHash, now())');
             $binds = array("email"=>$email, ":pHash"=>$pHash);
             if($stmt->execute($binds))
             {

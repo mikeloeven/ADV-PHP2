@@ -28,9 +28,9 @@
                    }
                    
                 }
-                elseif(filter_input (INPUT_POST, 'action')=="Upload")
+                elseif(filter_input (INPUT_POST, 'action')=="Upload Files")
                 {
-                    head('Location: upload-form.php');
+                    header('Location: ./upload-form.php');
                 }
                 else 
                 {
