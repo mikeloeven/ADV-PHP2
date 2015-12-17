@@ -63,7 +63,7 @@ try
         if ( 'PUT' === $verb)
         {
             
-            if($resourceData->put($serverData))
+            if($resourceData->put($id, $serverData))
             {
                 $restServer->setMessage('Corperation ID: '.$id.' Updated');
                 $restServer->setStatus(203);

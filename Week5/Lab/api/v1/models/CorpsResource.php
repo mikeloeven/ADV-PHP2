@@ -72,7 +72,7 @@ class CorpsResource implements IRestModel
         {
             $results = $stmt->fetch(PDO::FETCH_ASSOC);
         }
-        
+        print_r($results);
         return $results;
     }
 
@@ -99,12 +99,13 @@ class CorpsResource implements IRestModel
         }
     }
 
-    public function put($serverData)
+    public function put($id, $serverData)
     {
+        print_r($serverData);
         $stmt = $this->getDB()->prepare('UPDATE corps SET corp = :corp, incorp_dt = :incorp_dt, email = :email, owner = :owner, phone = :phone, location = :location WHERE id = :id');
         $binds = array
         (
-            ':id' => $serverData['id'],
+            ':id' => $id,
             ':corp' => $serverData['corp'],
             ':incorp_dt' => $serverData['incorp_dt'],
             ':email' => $serverData['email'],
