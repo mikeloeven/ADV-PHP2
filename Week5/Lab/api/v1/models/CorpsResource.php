@@ -70,9 +70,8 @@ class CorpsResource implements IRestModel
         
         if ($stmt->execute() && $stmt->rowCount() > 0)
         {
-            $results = $stmt->fetch(PDO::FETCH_ASSOC);
+            $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
-        print_r($results);
         return $results;
     }
 
