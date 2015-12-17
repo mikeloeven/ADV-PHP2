@@ -66,7 +66,7 @@ try
             if($resourceData->put($serverData))
             {
                 $restServer->setMessage('Corperation ID: '.$id.' Updated');
-                $restServer->setStatus(202);
+                $restServer->setStatus(203);
             }
             else
             {
@@ -85,7 +85,7 @@ try
             elseif($resourceData->delete($id))
             {
                 $restServer->setMessage('Corperation ID: '.$id.' Deleted');
-                $restServer->setStatus(202);
+                $restServer->setStatus(204);
             }
         }
     }

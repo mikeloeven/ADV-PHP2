@@ -12,6 +12,8 @@ class RestServer {
         200 => 'OK',
         201 => 'Created',
         202 => 'Accepted',
+        203 => 'Updated',
+        204 => 'Deleted',
         400 => 'Bad Request',
         401 => 'Unauthorized',
         403 => 'Access Forbidden',
