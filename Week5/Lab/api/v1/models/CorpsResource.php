@@ -100,7 +100,6 @@ class CorpsResource implements IRestModel
 
     public function put($id, $serverData)
     {
-        print_r($serverData);
         $stmt = $this->getDB()->prepare('UPDATE corps SET corp = :corp, incorp_dt = :incorp_dt, email = :email, owner = :owner, phone = :phone, location = :location WHERE id = :id');
         $binds = array
         (

@@ -63,7 +63,11 @@ try
         if ( 'PUT' === $verb)
         {
             
-            if($resourceData->put($id, $serverData))
+            if(NULL === $id)
+            {
+                throw new Exception('Corperation ID: '.$id.' Not Found');
+            }
+            elseif($resourceData->put($id, $serverData))
             {
                 $restServer->setMessage('Corperation ID: '.$id.' Updated');
                 $restServer->setStatus(203);
@@ -83,9 +87,13 @@ try
                 throw new Exception('Corperation ID: '.$id.' Not Found');
             }
             elseif($resourceData->delete($id))
-            {
+            {                
                 $restServer->setMessage('Corperation ID: '.$id.' Deleted');
-                $restServer->setStatus(204);
+                $restServer->setStatus(202);
+            }
+            else
+            {
+                throw new Exception('Corperation ID: '.$id.' Not Found');
             }
         }
     }
