@@ -37,7 +37,7 @@ try
         
         if( 'GET' === $verb)
         {
-            if (null === $id)
+            if (NULL === $id)
             {
                 $restServer->setData($resourceData->getAll());
             }
@@ -60,12 +60,57 @@ try
             }
         }
         
+        if ( 'PUT' === $verb)
+        {
+            
+            if($resourceData->put($serverData))
+            {
+                $restServer->setMessage('Corperation ID: '.$id.' Updated');
+                $restServer->setStatus(202);
+            }
+            else
+            {
+                throw new Exception('Corperation ID: '.$id.' Not Found');
+            }
+           
+            
+        }  
         
+        if ( 'DELETE' === $verb)
+        {
+            if (NULL === $id)
+            {
+                throw new Exception('Corperation ID: '.$id.' Not Found');
+            }
+            elseif($resourceData->delete($id))
+            {
+                $restServer->setMessage('Corperation ID: '.$id.' Deleted');
+                $restServer->setStatus(202);
+            }
+        }
+    }
+    else 
+    {
+        throw new MissingResourceException($resource . ' Resource Not Found');
     }
 
 } 
 
-catch (Exception $ex) 
+catch (InvalidArgumentException $iax) 
 {
-    
+    $restServer->setStatus(400);
+    $restServer->setErrors($iax->getMessage());
+} 
+catch (Exception $ex) 
+{    
+    $restServer->setStatus(500);
+    $restServer->setErrors($ex->getMessage());   
 }
+catch (MissingResourceException $mrx)
+{
+    $restServer->setStatus(404);
+    $restServer->setErrors($mrx->getMessage());
+}
+
+
+$restServer->outputReponse();
