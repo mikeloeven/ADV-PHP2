@@ -1,0 +1,28 @@
+<h1>Address Table</h1>
+
+<div class="content">
+    
+    <h3>Search</h3>
+    <!-- https://docs.angularjs.org/api/ng/filter/filter -->
+    <br />
+    <br /> 
+    
+    <table class="gridtable">
+        <thead>
+            <tr>
+                <th>Corp</th>
+                <th>Owner</th>                
+                <th>Email</th>
+            </tr>
+        </thead>    
+        
+        <tr ng-repeat="corp in corperations">
+            <td>{{corps.corp}}</td>                  
+            <td>{{corps.owner}}</td>
+            <td>{{corps.email}}</td>
+            <td><a ng-href="#/corps/{{corps.corps_id}}">View</a></td>
+        </tr>
+    </table>
+        
+</div>
+
