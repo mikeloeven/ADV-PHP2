@@ -8,7 +8,7 @@ var myApp = angular.module('myApp', [
 
 myApp.constant('config', {
     "endpoints": {
-       "corps" : 'http://localhost:7000/PhpDemos_Static/week5/demo/api/v1/corps'
+       "corps" : 'http://localhost:7000/PhpAdv/week5/lab/api/v1/corps'
     },
     "models" : {
         "corps" : {
@@ -30,7 +30,7 @@ myApp.config(['$routeProvider',
     $routeProvider.
         when('/', {
             templateUrl: 'partials/corps.html',
-            controller: 'CorperationCtrl'
+            controller: 'CorpsCtrl'
         }).
         when('/corps/:corpsId', {
             templateUrl: 'partials/corps-detail.html',

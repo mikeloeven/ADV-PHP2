@@ -5,11 +5,11 @@ var appControllers = angular.module('appControllers', []);
 appControllers.controller('CorpsCtrl', ['$scope', '$log', 'corpsProvider', 
     function($scope, $log, corpsProvider) {
     
-        $scope.corpses = [];
+        $scope.corperations = [];
 
         function getCorperations() {    
             corpsProvider.getAllCorperations().success(function(response) {
-                $scope.corpses = response.data;
+                $scope.corperations = response.data;
             }).error(function (response, status) {
                $log.log(response);
             });
@@ -28,7 +28,7 @@ appControllers.controller('CorpsCtrl', ['$scope', '$log', 'corpsProvider',
        function getCorperation() {    
             corpsProvider.getCorperations(corpsID).success(function(response) {
                 $scope.corps = response.data;
-                $scope.corps.birthday = new Date($scope.corps.birthday);                
+                $scope.corps.incorp_dt = new Date($scope.corps.incorp_dt);                
                 console.log($scope.corps);
                 loadMap('41.8239890,-71.4128340');
             }).error(function (response, status) {

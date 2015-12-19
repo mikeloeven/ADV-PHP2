@@ -11,8 +11,8 @@ appServices.factory('corpsProvider', ['$http', 'config', function($http, config)
         "getAllCorperations": function () {
             return $http.get(url);
         },
-        "getCorperations": function (corps_id) {
-            var _url = url + '/' + corps_id;
+        "getCorperations": function (id) {
+            var _url = url + '/' + id;
             console.log(_url);
             return $http.get(_url);
         },
@@ -25,12 +25,12 @@ appServices.factory('corpsProvider', ['$http', 'config', function($http, config)
             
             return $http.post(url, model);
         },
-        "deleteCorperation" : function (corps_id) {
-            var _url = url + corps_id;
+        "deleteCorperation" : function (id) {
+            var _url = url + id;
             return $http.delete(_url);
         },
-        "updateCorperation" : function (corps_id, fullname, email, corpsline1, city, state, zip, birthday ) {  
-            var _url = url + '/' + corps_id;
+        "updateCorperation" : function (id, corp, incorp_dt, email, owner, phone, location) {  
+            var _url = url + '/' + id;
             model.corp = corp;
             model.incorp_dt = incorp_dt;
             model.owner = owner;
